@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Buku Nabaca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka One', cursive;
+        }
+        .rainbow-gradient {
+            background: linear-gradient(90deg, #FF5A5F, #FFB400, #4CAF50, #2196F3, #9C27B0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .rainbow-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #FF5A5F, #FFB400, #4CAF50, #2196F3, #9C27B0);
+        }
+        .placeholder-bg {
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            height: 200px;
+            border-radius: 0.5rem;
+            flex-direction: column;
+            border: 2px dashed #ced4da;
+        }
+        .form-input {
+            @apply mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="rainbow-bar"></div>
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book-open text-3xl text-blue-500"></i>
+                <h1 class="text-2xl font-fredoka text-gray-800">Toko <span class="rainbow-gradient">Nabaca</span></h1>
+            </div>
+            <div class="relative cursor-pointer" onclick="showCartModal()">
+                <i class="fas fa-shopping-cart text-2xl text-gray-600"></i>
+                <span id="cart-count" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Produk Unggulan Kami</h2>
+        <p class="text-center text-gray-500 mb-10">Pilih buku dan level yang sesuai untuk buah hati Anda!</p>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Product Card 1: Buku Nabaca -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <div class="p-4"><div class="placeholder-bg"><i class="fas fa-image text-4xl mb-2"></i><span>Foto Produk</span></div></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800">Buku Nabaca</h3>
+                    <p class="text-gray-600 mt-2">Membantu anak belajar membaca dengan metode yang menyenangkan.</p>
+                    <div class="mt-4">
+                        <label for="level-nabaca" class="block text-sm font-medium text-gray-700">Pilih Level:</label>
+                        <select id="level-nabaca" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option>Level 1</option><option>Level 2</option><option>Level 3</option><option>Level 4</option><option>Level 5</option><option>Level 6</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-2xl font-bold text-indigo-600">Rp 10.000</span>
+                        <button onclick="addToCart('nabaca', 'Buku Nabaca', 10000, 'level-nabaca')" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg flex items-center space-x-2 transition-colors"><i class="fas fa-cart-plus"></i><span>Tambah</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2: Buku Sang Juara -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <div class="p-4"><div class="placeholder-bg"><i class="fas fa-image text-4xl mb-2"></i><span>Foto Produk</span></div></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800">Buku Sang Juara</h3>
+                    <p class="text-gray-600 mt-2">Materi latihan untuk mengasah kemampuan berhitung dan logika.</p>
+                    <div class="mt-4">
+                        <label for="level-juara" class="block text-sm font-medium text-gray-700">Pilih Level:</label>
+                        <select id="level-juara" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option>Level 1</option><option>Level 2</option><option>Level 3</option><option>Level 4</option><option>Level 5</option><option>Level 6</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-2xl font-bold text-indigo-600">Rp 10.000</span>
+                        <button onclick="addToCart('juara', 'Buku Sang Juara', 10000, 'level-juara')" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg flex items-center space-x-2 transition-colors"><i class="fas fa-cart-plus"></i><span>Tambah</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-lg mx-auto">
+            
+            <!-- Cart View -->
+            <div id="cart-view">
+                <div class="flex justify-between items-center p-5 border-b">
+                    <h2 class="text-2xl font-bold text-gray-800"><i class="fas fa-shopping-cart mr-2"></i>Keranjang Belanja</h2>
+                    <button onclick="hideCartModal()" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                </div>
+                <div id="cart-items-container" class="p-5 max-h-48 overflow-y-auto">
+                     <p id="cart-empty-msg" class="text-gray-500 text-center">Keranjang Anda masih kosong.</p>
+                </div>
+
+                <!-- Add More Products Section -->
+                <div class="p-5 border-t">
+                    <h4 class="font-bold text-gray-700 mb-3">Tambah Produk Lain</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">Buku Nabaca</span>
+                            <div class="flex items-center space-x-2">
+                                <select id="level-nabaca-modal" class="text-xs rounded-md border-gray-300 p-1">
+                                    <option>Level 1</option><option>Level 2</option><option>Level 3</option><option>Level 4</option><option>Level 5</option><option>Level 6</option>
+                                </select>
+                                <button onclick="addToCart('nabaca', 'Buku Nabaca', 10000, 'level-nabaca-modal')" class="bg-blue-500 hover:bg-blue-600 text-white w-6 h-6 rounded flex items-center justify-center">+</button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">Buku Sang Juara</span>
+                            <div class="flex items-center space-x-2">
+                                <select id="level-juara-modal" class="text-xs rounded-md border-gray-300 p-1">
+                                    <option>Level 1</option><option>Level 2</option><option>Level 3</option><option>Level 4</option><option>Level 5</option><option>Level 6</option>
+                                </select>
+                                <button onclick="addToCart('juara', 'Buku Sang Juara', 10000, 'level-juara-modal')" class="bg-blue-500 hover:bg-blue-600 text-white w-6 h-6 rounded flex items-center justify-center">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-5 bg-gray-50 border-t">
+                    <div id="checkout-summary">
+                        <div class="flex justify-between text-lg"><span class="text-gray-600">Subtotal</span><span id="subtotal" class="font-bold text-gray-800">Rp 0</span></div>
+                        <div class="flex justify-between text-lg mt-2"><span class="text-gray-600">Pengiriman</span><span id="shipping" class="font-bold text-gray-800">Rp 0</span></div>
+                        <hr class="my-3">
+                        <div class="flex justify-between text-xl font-bold"><span class="text-gray-800">Total</span><span id="total" class="text-indigo-600">Rp 0</span></div>
+                    </div>
+                    <button id="checkout-btn" onclick="showFormView()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg mt-4 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed">
+                        Lanjut ke Pembayaran
+                    </button>
+                </div>
+            </div>
+
+            <!-- Form View -->
+            <div id="form-view" class="hidden">
+                 <div class="flex justify-between items-center p-5 border-b">
+                    <h2 class="text-2xl font-bold text-gray-800"><i class="fas fa-user-edit mr-2"></i>Data Pengiriman</h2>
+                    <button onclick="hideCartModal()" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                </div>
+                <form id="checkout-form" class="p-5 space-y-4">
+                    <div><label for="nama" class="text-sm font-medium text-gray-700">Nama Lengkap</label><input type="text" id="nama" name="nama" class="form-input" required></div>
+                    <div><label for="alamat" class="text-sm font-medium text-gray-700">Alamat Lengkap</label><textarea id="alamat" name="alamat" rows="3" class="form-input" required></textarea></div>
+                    <div><label for="kodepos" class="text-sm font-medium text-gray-700">Kode Pos</label><input type="tel" id="kodepos" name="kodepos" class="form-input" required></div>
+                    <div><label for="nowa" class="text-sm font-medium text-gray-700">No. WhatsApp (Contoh: 628xxxx)</label><input type="tel" id="nowa" name="nowa" class="form-input" required></div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg mt-4 transition-colors">Kirim Pesanan & Bayar</button>
+                    <button type="button" onclick="showCartView()" class="w-full text-center text-sm text-gray-600 hover:underline mt-2">Kembali ke Keranjang</button>
+                </form>
+            </div>
+
+            <!-- Success View -->
+            <div id="success-view" class="hidden text-center p-8">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-check text-4xl text-green-500"></i></div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Terima Kasih!</h2>
+                <p class="text-gray-600 mb-4">Pesanan Anda telah kami terima. Silakan lakukan pembayaran ke rekening berikut:</p>
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg text-left">
+                    <p class="font-bold">Total Pembayaran:</p>
+                    <p id="success-total-amount" class="text-2xl font-mono tracking-wider text-indigo-600">Rp 0</p>
+                    <hr class="my-2 border-blue-200">
+                    <p class="font-bold mt-2">Bank Jago</p>
+                    <p class="text-xl font-mono tracking-wider">104211970079</p>
+                    <p class="font-bold mt-2">a/n Nabaca Store</p>
+                </div>
+                <button onclick="closeAndReset()" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg mt-6 transition-colors">Tutup</button>
+            </div>
+
+        </div>
+    </div>
+    
+    <script>
+        // --- STATE & CONFIG ---
+        let cart = [];
+        const SHIPPING_FEE = 35000;
+        const ADMIN_WA_NUMBER = '6285157088268';
+
+        // --- DOM ELEMENTS ---
+        const checkoutModal = document.getElementById('checkout-modal');
+        const cartView = document.getElementById('cart-view');
+        const formView = document.getElementById('form-view');
+        const successView = document.getElementById('success-view');
+        const cartCount = document.getElementById('cart-count');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const subtotalEl = document.getElementById('subtotal');
+        const shippingEl = document.getElementById('shipping');
+        const totalEl = document.getElementById('total');
+        const cartEmptyMsg = document.getElementById('cart-empty-msg');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const checkoutForm = document.getElementById('checkout-form');
+        const successTotalAmountEl = document.getElementById('success-total-amount');
+
+        // --- UTILITY FUNCTIONS ---
+        const formatCurrency = (amount) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);
+
+        // --- MODAL VIEW MANAGEMENT ---
+        function showCartModal() {
+            checkoutModal.classList.remove('hidden');
+            showCartView();
+        }
+        function hideCartModal() { checkoutModal.classList.add('hidden'); }
+        function showCartView() {
+            cartView.style.display = 'block';
+            formView.style.display = 'none';
+            successView.style.display = 'none';
+        }
+        function showFormView() {
+            cartView.style.display = 'none';
+            formView.style.display = 'block';
+            successView.style.display = 'none';
+        }
+        function showSuccessView() {
+            cartView.style.display = 'none';
+            formView.style.display = 'none';
+            successView.style.display = 'block';
+        }
+
+        // --- CART LOGIC ---
+        function addToCart(productId, productName, price, selectorId) {
+            const levelSelector = document.getElementById(selectorId);
+            const selectedLevel = levelSelector.value;
+            const cartItemId = `${productId}-${selectedLevel.replace(' ', '-')}`;
+            const existingItem = cart.find(item => item.id === cartItemId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id: cartItemId, name: productName, level: selectedLevel, price: price, quantity: 1 });
+            }
+            updateCartUI();
+            // Only show modal if it's not already visible
+            if (checkoutModal.classList.contains('hidden')) {
+                showCartModal();
+            }
+        }
+
+        function updateQuantity(cartItemId, change) {
+            const item = cart.find(item => item.id === cartItemId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(cartItem => cartItem.id !== cartItemId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(cartItemId) {
+            cart = cart.filter(item => item.id !== cartItemId);
+            updateCartUI();
+        }
+
+        // --- UI UPDATE FUNCTIONS ---
+        function updateCartUI() {
+            renderCartItems();
+            updateCartSummary();
+            updateCartIcon();
+        }
+
+        function renderCartItems() {
+            cartItemsContainer.innerHTML = ''; 
+            if (cart.length === 0) {
+                cartItemsContainer.appendChild(cartEmptyMsg);
+                cartEmptyMsg.style.display = 'block';
+            } else {
+                cartEmptyMsg.style.display = 'none';
+                cart.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'flex justify-between items-center mb-4';
+                    itemEl.innerHTML = `
+                        <div class="flex-grow">
+                            <p class="font-bold text-gray-800">${item.name}</p>
+                            <p class="text-sm text-gray-500">${item.level} - ${formatCurrency(item.price)}</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="text-gray-500 hover:text-black w-6 h-6 rounded-full border flex items-center justify-center">-</button>
+                            <span class="font-bold">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="text-gray-500 hover:text-black w-6 h-6 rounded-full border flex items-center justify-center">+</button>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="ml-4 text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>`;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+        }
+
+        function updateCartSummary() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal > 0 ? subtotal + SHIPPING_FEE : 0;
+            const shipping = subtotal > 0 ? SHIPPING_FEE : 0;
+
+            subtotalEl.textContent = formatCurrency(subtotal);
+            shippingEl.textContent = formatCurrency(shipping);
+            totalEl.textContent = formatCurrency(total);
+            checkoutBtn.disabled = cart.length === 0;
+        }
+
+        function updateCartIcon() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        function closeAndReset() {
+            hideCartModal();
+            cart = [];
+            checkoutForm.reset();
+            updateCartUI();
+            setTimeout(showCartView, 300);
+        }
+        
+        // --- FORM SUBMISSION ---
+        checkoutForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(checkoutForm);
+            const nama = formData.get('nama');
+            const alamat = formData.get('alamat');
+            const kodepos = formData.get('kodepos');
+            const nowa = formData.get('nowa');
+            
+            let orderDetails = "Halo, saya mau pesan buku:\n\n";
+            cart.forEach(item => {
+                orderDetails += `*${item.name} (${item.level})* - ${item.quantity}x\n`;
+            });
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + SHIPPING_FEE;
+            
+            orderDetails += `\nSubtotal: ${formatCurrency(subtotal)}`;
+            orderDetails += `\nPengiriman: ${formatCurrency(SHIPPING_FEE)}`;
+            orderDetails += `\n*Total: ${formatCurrency(total)}*`;
+            
+            const customerDetails = `\n\n*Data Pemesan:*\nNama: ${nama}\nAlamat: ${alamat}\nKode Pos: ${kodepos}\nNo. WA: ${nowa}`;
+            
+            const waMessage = encodeURIComponent(orderDetails + customerDetails);
+            const waUrl = `https://api.whatsapp.com/send?phone=${ADMIN_WA_NUMBER}&text=${waMessage}`;
+            
+            window.open(waUrl, '_blank');
+            
+            // Update the success view with the total amount
+            successTotalAmountEl.textContent = formatCurrency(total);
+            
+            showSuccessView();
+        });
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', updateCartUI);
+    </script>
+
+</body>
+</html>
