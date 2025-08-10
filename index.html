@@ -25,17 +25,6 @@
             height: 8px;
             background: linear-gradient(90deg, #FF5A5F, #FFB400, #4CAF50, #2196F3, #9C27B0);
         }
-        .placeholder-bg {
-            background-color: #e9ecef;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            height: 200px;
-            border-radius: 0.5rem;
-            flex-direction: column;
-            border: 2px dashed #ced4da;
-        }
         .form-input {
             @apply mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
         }
@@ -67,7 +56,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Product Card 1: Buku Nabaca -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                <div class="p-4"><div class="placeholder-bg"><i class="fas fa-image text-4xl mb-2"></i><span>Foto Produk</span></div></div>
+                <div class="p-4 bg-gray-100">
+                    <img src="https://i.ibb.co/DDj0bpLt/Gambar-Whats-App-2025-08-02-pukul-13-21-24-64e2f2c6.jpg" alt="Foto Buku Nabaca dan Sang Juara" class="w-full h-52 object-contain rounded-md">
+                </div>
                 <div class="p-6">
                     <h3 class="text-2xl font-bold text-gray-800">Buku Nabaca</h3>
                     <p class="text-gray-600 mt-2">Membantu anak belajar membaca dengan metode yang menyenangkan.</p>
@@ -86,7 +77,9 @@
 
             <!-- Product Card 2: Buku Sang Juara -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                <div class="p-4"><div class="placeholder-bg"><i class="fas fa-image text-4xl mb-2"></i><span>Foto Produk</span></div></div>
+                <div class="p-4 bg-gray-100">
+                    <img src="https://i.ibb.co.com/6Jy7bGxD/Whats-App-Image-2024-10-15-at-20-39-02.jpg" alt="Foto Buku Nabaca dan Sang Juara" class="w-full h-52 object-contain rounded-md">
+                </div>
                 <div class="p-6">
                     <h3 class="text-2xl font-bold text-gray-800">Buku Sang Juara</h3>
                     <p class="text-gray-600 mt-2">Materi latihan untuk mengasah kemampuan berhitung dan logika.</p>
@@ -184,7 +177,7 @@
                     <hr class="my-2 border-blue-200">
                     <p class="font-bold mt-2">Bank Jago</p>
                     <p class="text-xl font-mono tracking-wider">104211970079</p>
-                    <p class="font-bold mt-2">a/n Sulistiyono</p>
+                    <p class="font-bold mt-2">a/n Nabaca Store</p>
                 </div>
                 <button onclick="closeAndReset()" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg mt-6 transition-colors">Tutup</button>
             </div>
